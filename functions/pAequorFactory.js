@@ -56,6 +56,21 @@ const pAequorFactory = (specimenNum, dna) => {
             });
 
             return (countBasesC / dnaLength >= 0.6 || countBasesG / dnaLength >= 0.6)
+        },
+
+        complementStrand () {
+            return this._dna.map( base => {
+                switch (base) {
+                    case 'A':
+                        return 'T';
+                    case 'T':
+                        return 'A';
+                    case 'C':
+                        return 'G';
+                    case 'G':
+                        return 'C';
+                }
+            });
         }
     }
 }
