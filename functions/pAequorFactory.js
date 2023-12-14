@@ -35,6 +35,27 @@ const pAequorFactory = (specimenNum, dna) => {
             console.log(`Specimen #${this.specimenNum} and specimen #${pAequor.specimenNum} have ${compareBases/targetDna.length * 100}% DNA in common.`);
 
             return compareBases/targetDna.length;
+        },
+
+        willLikelySurvive () {
+            let countBasesC = 0;
+            let countBasesG = 0;
+            const dnaLength = this._dna.length;
+
+            this._dna.forEach( base => {
+                switch (base) {
+                    case 'C':
+                        countBasesC++;
+                        break;
+                    case 'G':
+                        countBasesG++;
+                        break;
+                    default:
+                        break;
+                }
+            });
+
+            return (countBasesC / dnaLength >= 0.6 || countBasesG / dnaLength >= 0.6)
         }
     }
 }
