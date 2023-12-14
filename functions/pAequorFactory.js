@@ -21,7 +21,7 @@ const pAequorFactory = (specimenNum, dna) => {
             this._dna[randDnaIndex] = returnRandBase(dnaBases);
         },
 
-        compareDNA (pAequor) {
+        compareDNA (pAequor, isLog = false) {
             const targetDna = pAequor.dna;
             const sourceDna = this.dna;
             let compareBases = 0;
@@ -32,7 +32,9 @@ const pAequorFactory = (specimenNum, dna) => {
                 }
             }
 
-            console.log(`Specimen #${this.specimenNum} and specimen #${pAequor.specimenNum} have ${compareBases/targetDna.length * 100}% DNA in common.`);
+            if (isLog) {
+                console.log(`Specimen #${this.specimenNum} and specimen #${pAequor.specimenNum} have ${Math.round(compareBases/targetDna.length * 100 * 100) / 100 }% DNA in common.`);
+            }
 
             return compareBases/targetDna.length;
         },
